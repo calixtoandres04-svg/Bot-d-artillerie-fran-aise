@@ -1,1 +1,22 @@
+CREATE TABLE IF NOT EXISTS player_stats (
+  id SERIAL PRIMARY KEY,
+  guild_id TEXT NOT NULL,
+  player_name TEXT NOT NULL,
+  kills INT DEFAULT 0,
+  assists INT DEFAULT 0,
+  updated_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(guild_id, player_name)
+);
 
+CREATE TABLE IF NOT EXISTS nation_records (
+  id SERIAL PRIMARY KEY,
+  guild_id TEXT NOT NULL,
+  nation_name TEXT NOT NULL,
+  shortcut_number INT NOT NULL,
+  wins INT DEFAULT 0,
+  losses INT DEFAULT 0,
+  ties INT DEFAULT 0,
+  updated_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(guild_id, nation_name),
+  UNIQUE(guild_id, shortcut_number)
+);
